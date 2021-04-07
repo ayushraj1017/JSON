@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JSON Sandbox</title>
+</head>
+
+<body>
+    <ul id="people"></ul>
+    <script>
+        //Object
+        let person = {
+            name: 'Brad',
+            age: 13,
+            address: {
+                street: '15 main st',
+                city: 'ohio',
+            },
+            children: ['Bran', 'tyrion'],
+        }
+        person = JSON.stringify(person);
+        person = JSON.parse(person);
+        console.log(person.children[1])
+
+        //Arrays of Object
+        let peoples = [
+            {
+                name: 'Brad',
+                age: 25,
+            },
+            {
+                name: 'tyrion',
+                age: 45,
+            },
+            {
+                name: 'emma',
+                age: 65,
+            },
+        ]
+
+        //Json form
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(xhttp.responseText);
+                var output = '';
+
+                for (let people of peoples) {
+
+                    output += '<li>' + people.name + '</li>';
+                }
+
+                document.getElementById('people').innerHTML = output;
+            }
+        };
+        xhttp.open("GET", "people.json", true);
+        xhttp.send();
+    </script>
+</body>
+
+</html>
