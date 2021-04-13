@@ -1,2 +1,2 @@
-# JSON J
+# JSON
 # JavaScript Object Notation
